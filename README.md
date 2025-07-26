@@ -1,4 +1,12 @@
 # Readme
+# 👋 Hi, I'm Sondre
+
+🔧 I created [`sbc_edge_exporter`](https://sondre4.gumroad.com/l/yisqf), a specialized exporter for SBC metrics.
+
+💼 Commercial license available for $75 on [Gumroad](https://sondre4.gumroad.com/l/yisqf)
+
+🌐 Related projects: [autopoker.net](https://autopoker.net)
+
 ## Prometheus exporter for Ribbon Communications SBC Edge routers
 #### Developed by Sondre Jørgensen in cooperation with Sang Ngoc Nguyen at NTNU: Norwegian University of Science and Technology, sondre2409@gmail.com and 29sangu@gmail.com as part of our bachelor's thesis. Developed for and in cooperation with Stig Atle Haugen at HDO
 Used together with a Prometheus server where metrics can be gathered from exporter-host-ip:5123/metrics. Metric types are grouped as collectors where each collector can be excluded for each host, ref. Configuration.
