@@ -1,0 +1,171 @@
+Ribbon SBC Edge - Recommended Metrics for Security and Reliability
+(Grafana)
+
+SECURITY-FOCUSED METRICS
+
+System Call Stats
+
+Rt_NumCallAttempts - Monitor for sudden spikes in call attempts that may
+indicate SIP floods.
+
+Rt_NumCallFailed - Increases may indicate attacks, routing issues, or
+downstream failures.
+
+Rt_NumCallCurrentlyUp - Unexpected surges can indicate abuse or DDoS
+conditions.
+
+Ethernet Port
+
+Rt_ifInUcastPkts Rt_ifOutUcastPkts - Track packet rates and establish
+normal baselines.
+
+Rt_ifInErrors Rt_ifOutErrors - Increases may indicate attacks, interface
+problems, or hardware issues.
+
+Rt_ifInDiscards Rt_ifOutDiscards - Important indicators of overload.
+
+Rt_ifInUnknwnProto - Unexpected protocol traffic may indicate scanning
+or malicious activity.
+
+Rt_ifOperatorStatus - Alert immediately when interfaces go down.
+
+System
+
+Rt_CPUUsage - Critical DDoS detection metric.
+
+Rt_CPULoadAverage1m Rt_CPULoadAverage5m - Detect rapid increases in
+processing demand.
+
+Rt_MemoryUsage - Sustained growth can indicate instability.
+
+Rt_FDUsage - File descriptor exhaustion can impact services.
+
+RELIABILITY-FOCUSED METRICS
+
+System Call Stats
+
+Rt_NumCallSucceeded - Core business KPI.
+
+Rt_NumCallFailed - Indicates service degradation.
+
+Rt_NumCallCurrentlyUp - Capacity monitoring.
+
+Rt_NumCallAbandonedNoTrunk - Detect insufficient carrier capacity.
+
+Rt_NumCallUnAnswered - Monitor customer experience.
+
+Routing Entry
+
+Rt_ASR - One of the most important telecom KPIs.
+
+Rt_MOS - Voice quality indicator.
+
+Rt_Jitter - Real-time media quality metric.
+
+Rt_RoundTripDelay - Helps identify network performance problems.
+
+Rt_QualityFailed - Alert immediately when quality thresholds fail.
+
+Rt_RuleUsage - Useful for traffic engineering and route planning.
+
+Ethernet Port
+
+Rt_ifOperatorStatus - Interface availability.
+
+Rt_ifSpeed - Baseline interface capacity.
+
+Rt_ifInErrors Rt_ifOutErrors - Network health indicators.
+
+Rt_ifInDiscards Rt_ifOutDiscards - Congestion indicators.
+
+Rt_redundancyState Rt_redundancyRole - High-availability monitoring.
+
+Linecard
+
+Rt_ServiceStatus - Ensure modules remain operational.
+
+Rt_Status - Hardware health monitoring.
+
+Disk Partition
+
+Rt_CurrentUsage - Prevent storage exhaustion.
+
+Rt_MemoryAvailable - Detect low disk space conditions.
+
+System
+
+Rt_CPUUsage Rt_MemoryUsage - Overall system health.
+
+Rt_CPULoadAverage5m Rt_CPULoadAverage15m - Identify sustained load.
+
+Rt_TmpPartUsage - Prevent temporary storage issues.
+
+Rt_LoggingPartUsage - Ensure logging continues functioning.
+
+TOP GRAFANA DASHBOARDS
+
+1.  Executive Dashboard
+
+-   Rt_NumCallAttempts
+-   Rt_NumCallSucceeded
+-   Rt_NumCallFailed
+-   Rt_NumCallCurrentlyUp
+-   Rt_ASR
+-   Rt_MOS
+
+2.  Security Dashboard
+
+-   Rt_CPUUsage
+-   Rt_ifInUcastPkts
+-   Rt_ifOutUcastPkts
+-   Rt_ifInErrors
+-   Rt_ifOutErrors
+-   Rt_ifInDiscards
+-   Rt_ifOutDiscards
+-   Rt_ifInUnknwnProto
+-   Rt_NumCallAttempts
+-   Rt_NumCallFailed
+
+3.  Reliability Dashboard
+
+-   Rt_ASR
+-   Rt_MOS
+-   Rt_Jitter
+-   Rt_RoundTripDelay
+-   Rt_QualityFailed
+-   Rt_ifOperatorStatus
+-   Rt_ServiceStatus
+-   Rt_Status
+-   Rt_redundancyState
+
+4.  Capacity Dashboard
+
+-   Rt_NumCallCurrentlyUp
+-   Rt_CPUUsage
+-   Rt_MemoryUsage
+-   Rt_ifSpeed
+-   Rt_FDUsage
+-   Rt_CurrentUsage
+
+RECOMMENDED ALERTS
+
+Critical: - Rt_ifOperatorStatus changes to DOWN - Rt_redundancyState
+changes from Online - Rt_QualityFailed = true - Rt_ServiceStatus
+indicates failure
+
+Warning: - Rt_CPUUsage > 85% - Rt_MemoryUsage > 85% - Rt_CurrentUsage >
+85% - Rt_LoggingPartUsage > 80%
+
+Performance: - Rt_ASR drops below historical baseline - Rt_MOS drops
+below acceptable levels - Rt_Jitter increases significantly -
+Rt_RoundTripDelay increases significantly
+
+Security: - Rt_NumCallAttempts spikes abnormally - Rt_NumCallFailed
+spikes abnormally - Rt_ifInDiscards increases sharply - Rt_ifInErrors
+increases sharply
+
+Conclusion: If building Grafana dashboards from these exporters, the
+highest-value metrics are ASR, MOS, call failures, active calls,
+interface health, redundancy status, CPU utilization, and network
+error/discard counters. These provide the best coverage for security,
+telecom reliability, and operational awareness.
