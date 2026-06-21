@@ -1,4 +1,4 @@
-
+##### Edit 2026, added a txt file for metrics that are useful to monitor for security and reliability. Systemcollector is a mandatory collector I believe so you should not exclude it. Routingentry collector takes more time to process than the other collectors because it gathers data about all routes, thats why its useful to put the field routing-database-hours to a higher number if youre more concerned with exporter performance than a 100% reliable metrics(and also only if this exporter is set to run a long time without restart). According to Ribbon the load on the SBCs is minimal with this exporter.
 ## Prometheus exporter for Ribbon Communications SBC Edge routers
 #### Developed by Sondre Jørgensen in cooperation with Sang Ngoc Nguyen at NTNU: Norwegian University of Science and Technology, sondre2409@gmail.com and 29sangu@gmail.com as part of our bachelor's thesis. Developed for and in cooperation with Stig Atle Haugen at HDO
 Used together with a Prometheus server where metrics can be gathered from exporter-host-ip:5123/metrics. Metric types are grouped as collectors where each collector can be excluded for each host, ref. Configuration.
